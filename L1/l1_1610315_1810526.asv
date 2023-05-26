@@ -1,0 +1,26 @@
+% Universidad Simon Bolivar
+% Lab1 - EC2422 Comunicaciones 1
+% Abril Julio 2023
+% Autores:
+% Josmar Dominguez 16-10315
+% Oscar Gonzalez 18-10526
+
+% Se limpia el espacio de trabajo
+clear all
+close all
+
+% Se llama a la funcion que procesa la senal segun selector
+sel = input("Ingrese el selector ('1. x(t)' o 'sonido'): ");
+sel
+msg = mensaje(sel);
+
+t = linspace(0, 0.02, length(msg));
+length(t)   % Debe ser 200000 siempre
+
+% Se grafica el mensaje
+figure(1)
+plot(t, msg)
+title('Mensaje')
+xlabel('Tiempo (s)')
+ylabel('Amplitud (V)')
+grid on
