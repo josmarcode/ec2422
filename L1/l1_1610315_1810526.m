@@ -83,7 +83,7 @@ else
     % Se grafica todo el ruido
     plot(t, msg_mod)
 end
-title("x(t) modulada en el tiempo")
+title("x(t) modulada (" + modulations(sel_mod) + ") en el tiempo")
 xlabel("Tiempo [s]")
 ylabel("Amplitud")
 subplot(2,1,2)

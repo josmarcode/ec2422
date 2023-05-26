@@ -18,23 +18,12 @@ function [msg] = modulador(msg, selector_modulacion, fc, mu)
     if strcmp(selector_modulacion, 'AM')
         % Modulación con índice de modulación µ
         msg_mod = (1 + mu * msg) .* c_t;
-        % if mu > 1
-        %     msg_mod = (1 + mu * msg) .* c_t;
-        % else
-        %     error('El índice de modulación debe ser mayor a 1 para la modulación AM.');
-        % end
-    
+
     % Modulación DSB
     elseif strcmp(selector_modulacion, 'DSB')
-        % Generar la señal portadora en banda lateral inferior (BLI)
-        bli_t = msg .* c_t;
-        
-        % Generar la señal portadora en banda lateral superior (BLS)
-        bls_t = hilbert(msg) .* sin(2*pi*fc*t);
-        
-        % Sumar ambas señales portadoras
-        msg_mod = bli_t + bls_t;
-    
+        % Modulacion DSB
+        msg_mod = msg .* c_t;
+
     % Selector de modulación inválido
     else
         error('Selector de modulación inválido. Por favor, elige "AM" o "DSB".');
