@@ -112,8 +112,18 @@ elseif sel_signal == 3
     xlabel("Frecuencia (Hz)")
     ylabel("Amplitud")
 
-    
+    % Reproducir sonido de salida
+    sound(y_E, fs);
 
+    % Aplicar ruido y graficar
+    Sr_Nr_values = [1, 2, 3, 4, 5];
+
+    [Sd_Nd, Sr_Nr] = ruido(y_E, 0.1, Sr_Nr_values);
+
+    % for i = 1:length(Sr_Nr_values)
+    %     Sr_Nr_val = Sr_Nr_values(i);
+    %     [Sd_Nd, Sr_Nr] = ruido(y_E, 0.1, Sr_Nr_val);
+    % end
     return      % Finalizar programa
 end
 

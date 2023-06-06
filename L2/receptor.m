@@ -41,34 +41,4 @@ function [y_A, y_B, y_C, y_D, y_E] = receptor(msg_RF, f_LO, freqDev, w_IF, w)
     b           = fir1(64, f_lpf/(fs/2));   % Diseño del filtro FIR
     y_E         = filter(b, 1, y_D);        % Salida del filtro pasabajos (señal demodulada en el punto E)
 
-        
-    % N=825000;
-    % t = 0: 1/fs: (N-1)*(1/fs);
-    % W_RF = 5000;
-
-    % fif = 14000;
-    % fc = f_LO - fif;
-    % RF1 = fc - W_RF/2; %Frecuencias de corte del filtro RF
-    % RF2 = fc + W_RF/2;
-    % IF1 = fif - w_IF/2; %Frecuencias corte filtro IF       
-    % IF2 =  fif + w_IF/2;
-    
-    % %Filtro de Radiofrecuencia
-    % FiltroRF = fdesign.bandpass('N,F3dB1,F3dB2', 4, RF1, RF2, fs); 
-    % FiltroRF = design(FiltroRF, 'butter'); 
-   
-    % %Filtro de frencuencia intermedia
-	% FiltroIF = fdesign.bandpass('N,F3dB1,F3dB2', 4, IF1, IF2, fs); 
-    % FiltroIF = design(FiltroIF, 'butter');
-    
-    % %Filtro pasabajos
-    % FiltroLPF = fdesign.lowpass('N,F3dB', 4, w, fs);
-    % FiltroLPF = design(FiltroLPF, 'butter');
-    
-    % %Asignación de etapas
-    % y_A = filter(FiltroRF, msg_RF);         %Mensaje en radiofrecuencia  
-	% y_B = y_A.* cos(2*pi*f_LO*t)';           %Mensaje mezclado
-    % y_C = filter(FiltroIF, y_B);            %Mensaje filtrado frecuencia intermedia
-    % y_D = fmdemod(y_C, fif, fs, freqDev);   %Mensaje dtector FM
-    % y_E = filter(FiltroLPF, y_D);           %Mensaje filtro pasabajo
 end
