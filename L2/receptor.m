@@ -1,6 +1,6 @@
 % Función que simula el superheterodino
 % y demodula la señal x(t)
-% @param msg_RF: Frecuencia de sintonización
+% @param msg_RF: Mensaje modulado en RF
 % @param f_LO: Frecuencia del oscilador local
 % @param freqDev: Desviación de frecuencia
 % @param w_IF: Ancho del filtro pasabanda de IF
@@ -30,8 +30,8 @@ function [y_A, y_B, y_C, y_D, y_E] = receptor(msg_RF, f_LO, freqDev, w_IF, w)
     y_B = y_A .* LO;            % Señal mezclada con el oscilador local
     
     % Sección IF (Filtro pasabanda)
-    f_fif       = [f_if-w_IF/2, f_if+w_IF/2];        % Frecuencias de corte del filtro
-    b           = fir1(64, f_fif/(fs/2));      % Diseño del filtro FIR
+    f_fif       = [f_if-w_IF/2, f_if+w_IF/2];       % Frecuencias de corte del filtro
+    b           = fir1(64, f_fif/(fs/2));           % Diseño del filtro FIR
     y_C         = filter(b, 1, y_A);                % Salida de la sección IF
     
     % Detector FM
